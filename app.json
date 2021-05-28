@@ -1,0 +1,40 @@
+{
+    "expo": {
+        "name": "Lazada by IIUM",
+        "slug": "shop-app",
+        "platforms": [
+            "ios",
+            "android"
+        ],
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "cover",
+            "backgroundColor": "#FFFFFF"
+        },
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": [
+            "**/*"
+        ],
+        "ios": {
+            "bundleIdentifier": "io.github.its-ash.shop-app",
+            "buildNumber": "1.0.0",
+            "supportsTablet": true
+        },
+        "android": {
+            "package": "io.github.its_ash.shop_app",
+            "versionCode": 1,
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/icon.png",
+                "backgroundColor": "#FFFFFF"
+            },
+            "permissions": [
+                "WRITE_EXTERNAL_STORAGE"
+            ]
+        }
+    }
+}
