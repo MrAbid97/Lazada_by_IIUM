@@ -5,6 +5,8 @@ export const CREATE_PRODUCT = "CREATE_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 export const SET_PRODUCTS = "SET_PRODUCTS";
 
+
+// Fetch Product from server using get
 export const fetchProduct = () => {
     return async (dispatch, getState) => {
         try {
@@ -14,8 +16,10 @@ export const fetchProduct = () => {
                 // handle 400 and 500 status code
                 throw new Error('Something went wrong !')
             }
+            // if response code if OK then wait for data
             const resData = await response.json();
             const loadedProducts = [];
+            // set data in model:product format
             for (const key in resData) {
                 loadedProducts.push(new Product(
                     key,
@@ -26,7 +30,7 @@ export const fetchProduct = () => {
                     resData[key].price
                 ))
             }
-
+            // dispatch model:product data list
             dispatch({
                 type: SET_PRODUCTS,
                 products: loadedProducts,
@@ -40,6 +44,7 @@ export const fetchProduct = () => {
     };
 }
 
+// Deleted Product by Doing Delete request
 export const deleteProduct = (productId) => {
 
     return async (dispatch, getState) => {
@@ -51,7 +56,7 @@ export const deleteProduct = (productId) => {
         if (!response.ok) {
             throw new Error("Something went wrong!");
         }
-
+        // if response if OK then Dispatch event with TYPE
         dispatch({
             type: DELETE_PRODUCT,
             pid: productId
@@ -59,6 +64,7 @@ export const deleteProduct = (productId) => {
     }
 };
 
+// Create product by doing Post request
 export const createProduct = (title, description, imageUrl, price) => {
     return async (dispatch, getState) => {
         const token = getState().auth.token;
@@ -77,9 +83,9 @@ export const createProduct = (title, description, imageUrl, price) => {
                 ownerId: userId
             })
         });
-
+        // if response is ok then wait for data
         const resData = await response.json();
-
+        // After data received dispatch the Data with TYPE
         dispatch({
             type: CREATE_PRODUCT,
             productData: {
@@ -90,34 +96,6 @@ export const createProduct = (title, description, imageUrl, price) => {
                 price,
                 ownerId: userId
             }
-        });
-    }
-};
-
-export const updateProduct = (id, title, description, imageUrl) => {
-
-    return async (dispatch, getState) => {
-        const token = getState().auth.token;
-        const response = await fetch(`https://ecom-c0f34-default-rtdb.asia-southeast1.firebasedatabase.app/products/${id}.json?auth=${token}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                title,
-                description,
-                imageUrl,
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error("Something went wrong!");
-        }
-
-        dispatch({
-            type: UPDATE_PRODUCT,
-            pid: id,
-            productData: {title, description, imageUrl}
         });
     }
 };

@@ -1,5 +1,6 @@
 import {AUTHENTICATE, LOGOUT, SET_DID_TRY_AUTO_LOGIN} from "../actions/auth";
 
+// Init Store
 const initialState = {
     token: null,
     userId: null,
@@ -9,6 +10,7 @@ const initialState = {
     userProfile: null,
 };
 
+// Defined all return based on event TYPE
 export default (state = initialState, action) => {
     switch (action.type) {
         case AUTHENTICATE:
@@ -32,11 +34,6 @@ export default (state = initialState, action) => {
                 didTryAutoLogin: true
             };
 
-        // case SIGNUP:
-        //     return{
-        //         token: action.token,
-        //         userId: action.userId
-        //     };
 
         default:
             return state;

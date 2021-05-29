@@ -3,11 +3,14 @@ import CartItem from "../../models/cart-item";
 import { ADD_ORDER } from "../actions/orders";
 import { DELETE_PRODUCT } from "../actions/products";
 
+// Init Store
 const initialState = {
     items: {},
     totalAmount: 7,
 };
 
+
+// Define all return type Based on event Types
 const cartReducer = (state=initialState, action) => {
     switch(action.type){
         case ADD_TO_CART:
@@ -15,6 +18,7 @@ const cartReducer = (state=initialState, action) => {
             const prodPrice = addedProduct.price;
             const prodTitle = addedProduct.title;
             let updatedOrNewCartItem;
+            // Update quantity if product already in CART
             if(state.items[addedProduct.id]){
                 // already have the item in cart
                 updatedOrNewCartItem = new CartItem(

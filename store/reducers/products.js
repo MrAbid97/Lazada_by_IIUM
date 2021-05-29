@@ -1,12 +1,14 @@
 import {CREATE_PRODUCT, DELETE_PRODUCT, SET_PRODUCTS, UPDATE_PRODUCT} from "../actions/products";
 import Product from "../../models/product";
 
-
+// Init Store
 const initialState = {
     availableProducts: [],
     userProducts: []
 };
 
+
+// Based in Type Define return Types
 export default (state = initialState, action) => {
     switch (action.type) {
 
@@ -64,8 +66,6 @@ export default (state = initialState, action) => {
                 userProducts: state.userProducts.filter(product => product.id !== action.pid),
                 availableProducts: state.availableProducts.filter(product => product.id !== action.pid)
             }
-
-
     }
     return state;
 };

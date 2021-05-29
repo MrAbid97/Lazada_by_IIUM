@@ -1,23 +1,25 @@
-import { ADD_ORDER, SET_ORDERS } from "../actions/orders";
+import {ADD_ORDER, SET_ORDERS} from "../actions/orders";
 import Order from "../../models/order";
 
+// Init Store
 const initialState = {
     orders: []
 };
 
-const ordersReducer = (state=initialState, action) => {
-    switch(action.type){
+// Based on event type define return
+const ordersReducer = (state = initialState, action) => {
+    switch (action.type) {
 
         case SET_ORDERS:
-            return{
+            return {
                 orders: action.orders
             };
-            
+
         case ADD_ORDER:
             const newOrder = new Order(
-                action.orderData.id ,
-                action.orderData.items, 
-                action.orderData.amount, 
+                action.orderData.id,
+                action.orderData.items,
+                action.orderData.amount,
                 action.orderData.date
             );
 
