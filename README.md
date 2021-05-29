@@ -20,11 +20,11 @@ An E-commerce shop app in React Native.
 
 <div align="center">
 
-<img height=480 width=280 style="margin: 10px;" src="./screenshots/1.jpeg"/>
-<img height=480 width=280 style="margin: 10px;" src="./screenshots/2.jpeg"/>
-<img height=480 width=280 style="margin: 10px;" src="./screenshots/3.jpeg"/>
-<img height=480 width=280 style="margin: 10px;" src="./screenshots/4.jpeg"/>
-<img height=480 width=280 style="margin: 10px;" src="./screenshots/5.jpeg"/>
+<img height=600 width=280 style="margin: 10px;" src="./screenshots/1.jpeg"/>
+<img height=600 width=280 style="margin: 10px;" src="./screenshots/2.jpeg"/>
+<img height=600 width=280 style="margin: 10px;" src="./screenshots/3.jpeg"/>
+<img height=600 width=280 style="margin: 10px;" src="./screenshots/4.jpeg"/>
+<img height=600 width=280 style="margin: 10px;" src="./screenshots/5.jpeg"/>
 
 </div>
 
