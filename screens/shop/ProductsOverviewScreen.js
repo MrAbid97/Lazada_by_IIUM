@@ -10,7 +10,7 @@ import * as prodActions from '../../store/actions/products';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../../components/UI/HeaderButton';
 import Colors from '../../constants/Colors';
-import SearchBar from "react-native-elements/dist/searchbar/SearchBar-android";
+import {SearchBar} from "react-native-elements";
 import {vh} from "react-native-expo-viewport-units";
 
 const ProductsOverviewScreen = (props) => {
