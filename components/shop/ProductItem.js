@@ -9,7 +9,7 @@ const ProductItem = (props) => {
     }
 
     return (
-        <Card style={{padding: 10, margin: 50}}>
+        <Card style={{padding: 10, marginTop: 50, margin:10}}>
             {/* this make component work as button */}
             <TouchableCmp onPress={props.onSelect} useForeground>
                 <View>

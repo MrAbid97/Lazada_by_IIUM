@@ -1,8 +1,9 @@
 import React from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Button, Platform, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../../components/UI/HeaderButton';
+import Firebase from "../../firebaseConfig";
 
 
 const UserDetailScreen = props => {
@@ -10,6 +11,11 @@ const UserDetailScreen = props => {
     let [name, setName] = React.useState('Name');
     let [email, setEmail] = React.useState('Email');
     let [address, setAddress] = React.useState('Address');
+
+    const forgetPassword = () => {
+        Firebase.auth().sendPasswordResetEmail(email).then(_ => alert("A Email has been send to your email"))
+    }
+
 
     fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyD480eQzY9RTRTmRSTBhSKYqQlmhmEJBKM', {
         method: 'POST',
@@ -39,6 +45,11 @@ const UserDetailScreen = props => {
                 <Text style={styles.header}>{email}</Text>
                 <Text>Address</Text>
                 <Text style={styles.header}>{address}</Text>
+                <View style={styles.header}>
+                    <Button onPress={forgetPassword} title={"Reset Password"}>Reset
+                        Password</Button>
+                </View>
+
             </View>
         </>
     );

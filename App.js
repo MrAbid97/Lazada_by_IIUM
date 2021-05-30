@@ -10,7 +10,7 @@ import cartReducer from './store/reducers/cart';
 import ordersReducer from './store/reducers/orders';
 import authReducer from './store/reducers/auth';
 import AppNavigator from './navigation/AppNavigator';
-import { YellowBox } from 'react-native';
+import {YellowBox} from 'react-native';
 import _ from 'lodash';
 
 YellowBox.ignoreWarnings(['Setting a timer']);
@@ -20,6 +20,7 @@ console.warn = message => {
         _console.warn(message);
     }
 };
+YellowBox.ignoreWarnings(['Remote debugger']);
 
 const rootReducer = combineReducers({
     products: productsReducer,

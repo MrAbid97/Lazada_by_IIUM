@@ -12,7 +12,6 @@ const UserDetailEditScreen = props => {
     let [name, setName] = React.useState('name');
     let [email, setEmail] = React.useState('email');
     let [address, setAddress] = React.useState('unconfirmed');
-    let [password, setPassword] = React.useState('**********');
     let [loadDone, setLoadDone] = React.useState(true);
     let [error, setError] = React.useState("");
     if (loadDone) {
@@ -36,14 +35,6 @@ const UserDetailEditScreen = props => {
     }
     const updateData = () => {
         let data = {idToken: token, email: email, displayName: name, photoUrl: address};
-        if (password !== '**********') {
-            if (password.length < 5) {
-                setError('Password is too short');
-            } else {
-                data['password'] = password;
-            }
-        }
-
         fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyD480eQzY9RTRTmRSTBhSKYqQlmhmEJBKM',
             {
                 method: 'POST',
@@ -108,19 +99,6 @@ const UserDetailEditScreen = props => {
                     <Text>{address}</Text>
                 </View>
 
-
-                <View style={{margin: 10}}>
-                    <Text>Password</Text>
-                    <TextInput
-                        style={styles.inputStyle}
-                        keyboardType='default'
-                        placeholder="password"
-                        onChangeText={(text) => setPassword(text)}
-                        initialvalue={password}
-                    />
-                    <Text>{password}</Text>
-                    <Text style={{color: 'red', width: '100%', fontSize: 10}}>{error}</Text>
-                </View>
                 <Button
                     onPress={updateData}
                     title="SAVE"
