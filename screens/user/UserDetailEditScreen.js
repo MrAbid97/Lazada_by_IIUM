@@ -119,7 +119,7 @@ const UserDetailEditScreen = props => {
                         initialvalue={password}
                     />
                     <Text>{password}</Text>
-                    <Text style={{color: 'red', wordwrap: 'break-word', width: '100%', fontSize: 10}}>{error}</Text>
+                    <Text style={{color: 'red', width: '100%', fontSize: 10}}>{error}</Text>
                 </View>
                 <Button
                     onPress={updateData}
