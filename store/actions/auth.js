@@ -62,8 +62,6 @@ export const login = (email, password) => {
     return async dispatch => {
         await Firebase.auth().signInWithEmailAndPassword(email, password)
             .then((response) => {
-                console.log(response.user);
-                const email = response.user.email;
                 if (!response.user.emailVerified) {
                     Firebase.auth().currentUser.sendEmailVerification();
                     throw new Error("Your Email is Not Verified\nCheck Your Email");

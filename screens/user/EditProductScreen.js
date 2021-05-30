@@ -114,6 +114,7 @@ const EditProductScreen = props => {
         try {
             if (editedProduct) {
                 // Edit product
+                setImage("");
                 await dispatch(
                     productsActions.updateProduct(
                         prodId,
@@ -123,6 +124,7 @@ const EditProductScreen = props => {
                     )
                 );
             } else {
+                setImage("");
                 // Add New Product
                 await dispatch(
                     productsActions.createProduct(
@@ -166,10 +168,6 @@ const EditProductScreen = props => {
     }, [submitHandler]);
 
     const inputChangeHandler = useCallback((inputIdentifier, inputValue, inputValidity) => {
-        // let isValid = false;
-        // if(text.trim().length > 0){
-        //     isValid = true;
-        // }
         dispatchFormState({
             type: FORM_INPUT_UPDATE,
             value: inputValue,
@@ -229,10 +227,10 @@ const EditProductScreen = props => {
                         autoCapitalize='sentences'
                         autoCorrect
                         multiline
-                        numberOfLines={3}
+                        numberOfLines={1}
                         onInputChange={inputChangeHandler}
                         required
-                        minLength={5}
+                        minLength={1}
                     />
                 </View>
             </ScrollView>

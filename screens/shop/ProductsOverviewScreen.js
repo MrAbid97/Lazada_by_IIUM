@@ -20,6 +20,7 @@ const ProductsOverviewScreen = (props) => {
     const [error, setError] = useState();
     let products = useSelector(state => state.products.availableProducts);
     let [searchResult, setSearchResult] = useState(products);
+    let [searchText, setSearchText] = useState("");
     const dispatch = useDispatch();
 
     //Load all Products
@@ -61,7 +62,7 @@ const ProductsOverviewScreen = (props) => {
     if (error) {
         return (
             <View style={styles.centered}>
-                <Text>An error occured.</Text>
+                <Text>An error occurred.</Text>
                 <Button title="Try again" onPress={loadProducts} color={Colors.primary}/>
             </View>
         );
@@ -84,6 +85,7 @@ const ProductsOverviewScreen = (props) => {
     }
 
     const updateSearch = (value) => {
+        setSearchText(value);
         setSearchResult(products.filter(x => x.title.toLowerCase().includes(value)))
     };
     return (
@@ -92,6 +94,7 @@ const ProductsOverviewScreen = (props) => {
                 inputStyle={{backgroundColor: '#fefefe',}}
                 containerStyle={{backgroundColor: 'white', borderWidth: 0, borderRadius: 2}}
                 placeholder="Type Here..."
+                value={searchText}
                 onChangeText={updateSearch}
                 platform={'android'}/>
             <FlatList
